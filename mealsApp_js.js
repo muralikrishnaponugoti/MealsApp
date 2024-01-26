@@ -174,7 +174,7 @@ const app={
                 <h4>${meal.strMeal}</h4>
                 <div>
                     <button onclick="app.specificMealPage(event)" id="${meal.idMeal}">Read More</button>
-                    <div><img class="liked" id="${meal.idMeal}" src="../web_images/heart-icon.svg" alt="like"></div>
+                    <div><img class="liked" id="${meal.idMeal}" src="heart-icon.svg" alt="like"></div>
                 </div>
             </div>`;
             itemsList.append(li);// here this statment will append the li element under to the element which refarence is present in the itemsList
