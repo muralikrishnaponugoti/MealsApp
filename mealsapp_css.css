@@ -222,7 +222,7 @@ nav{
         width:40%;
         max-width: 100%;
     }
-    #menu-box #random-button,#menu-box #favourite-button{
+    #menu-box #random-btn,#menu-box #favourite-btn{
         height:auto;
         width:auto;
         font-size: inherit;
