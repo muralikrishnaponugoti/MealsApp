@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MealApp</title>
+        <link rel="stylesheet" href="mealsapp_css.css">
+        <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    </head>
+    <body id="mealsapp">
+        <header>
+            <div>
+                <div id="menu">
+                    <img src="images/menu-bar-solid.svg" alt="open">
+                    <div id="menu-box" class="menu-box-styles">
+                        <img src="x-white-solid.svg" alt="close" id="close">
+                        <div>
+                            <button id="random-btn" class="random-button">
+                                <h3 class="rmd-margin">Random Meal</h3>
+                                <img src="shuffle-solid.svg" alt="img">
+                            </button>
+                            <button id="favourite-btn" class="favourite-button">
+                                <h3 class="rmd-margin">My favourite</h3>
+                            </button>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+            <h1 class=>Find the <span>Meal</span> which you <span>Like</span></h1>
+            <nav>
+                <button id="random-button" class="random-button">
+                    <h3 class="rmd-margin">Random Meal</h3>
+                    <img src="shuffle-solid.svg" alt="img">
+                </button>
+                <div id="search-box">
+                    <form id="form">
+                        <input id="search" type="search" name="dish" placeholder="Search" required>
+                        <button><img id="search-img" src="magnifying-glass-solid.svg" alt="img"></button>
+                    </form>
+                </div>
+                <button id="favourite-button" class="favourite-button">
+                    <h3 class="rmd-margin">My favourite</h3>
+                </button>
+            </nav>
+        </header>
+        <section id="display-items">
+            <ul id="itemsList">
+                <!-- <li>
+                    <div id="item-box">
+                        <img src="../web_images/animal-movei.jpg" alt="img">
+                        <h4>dish</h4>
+                        <div>
+                            <button onclick="window.location.href='#'">Read More</button>
+                            <span class="liked"><img src="../web_images/heart-icon.svg" alt="like"></span>
+                        </div>
+                    </div>
+                </li> -->
+            </ul>
+        </section>
+        <script type="text/javascript" src="mealsApp_js.js"></script>
+    </body>
+</html>

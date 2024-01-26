@@ -1,0 +1,231 @@
+html{
+    background-color: rgb(62, 54, 54);
+}
+body{
+    padding:2rem;
+    padding-top:0px;
+}
+.rmd-margin{
+    margin:0px;
+}
+header{
+    text-align: center;
+    color:rgb(152, 155, 78);
+}
+header span{
+    font-style: italic;
+}
+#menu{
+    position:absolute;
+    right:1%;
+    top:1%;
+    height:0px;
+    width:0px;
+    padding:0px;
+    /* height:2rem;
+    width:2rem; */
+    background-color: orange;
+    /* padding:0.2em; */
+}
+#menu>img{
+    width:100%;
+    height:100%;
+}
+#menu-box{
+    position:absolute;
+    transition: all 1s ease-in-out;
+    top:90%;
+    right:100%;
+    width:10rem;
+    height:10rem;
+    background-color: rgb(119, 164, 164);
+    gap:50%;
+    padding:0.5em;
+}
+ .menu-box-styles button,.menu-box-styles{
+    width: 0px !important;
+    height: 0px !important;
+    font-size: 0% !important;
+    border: none !important;
+    padding: 0px !important;
+    overflow: hidden;
+}
+#menu-box> img{
+    width:15%;
+    height:15%;
+    display:block;
+    margin-left: 85%;
+}
+#menu-box>div{
+    width:auto;
+    height:auto;
+    display:flex;
+    gap:1em;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0.5em;
+}
+nav{
+    height:3rem;
+    display:flex;
+    justify-content: center;
+    margin-top: 1rem;
+    gap:2rem;
+}
+.random-button{
+    height:auto;
+    color:white;
+    background-color: orange;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: auto;
+    width:auto;
+}
+.random-button h3{
+    width:80%;
+    width:auto;
+    display: inline-block;
+    vertical-align: middle;
+}
+.random-button img{
+    width:10%;
+    vertical-align:middle;
+    height:100%;
+}
+#search-box{
+    border-radius: 2rem;
+    background-color: white;
+    width:auto;
+    display:flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;             
+
+}
+#search-box img{
+    width:100%;
+    vertical-align: top;
+    height:100%;
+    border-radius: inherit;
+    
+}
+#search-box form{
+    height:100%;
+    border-radius: inherit;
+}
+#search-box button{
+    width:15%;
+    height:100%;
+    margin:0px;
+    padding:0px;
+    border:none;
+    border-radius: inherit;
+    vertical-align:top;
+    background-color: transparent;
+
+}
+#search{
+    height:100%;
+    width:80%;
+    outline:none;
+    border:none;
+    border-radius: inherit;
+    font-size: x-large;
+    color:orange;
+}
+.favourite-button{
+    color:white;
+    background-color: orange;
+    border-radius: 2rem;
+    width:auto;
+
+}
+#display-items{
+    width:100%;
+    height:auto;
+}
+#itemsList{
+    width:100%;
+    height:auto;
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    list-style: none;
+    padding:0px;
+    gap:1rem;
+}
+#itemsList li{
+    width:20%;
+    max-width:30%;
+    height:20%;
+    max-height: 35%;
+    padding:0.3em;
+    flex-grow: 1;
+}
+#itemsList li:hover{
+    border:2px solid rgb(117, 108, 108)
+}
+#item-box{
+    width:auto;
+    height:100%;
+    background-color: rgba(255, 166, 1,0.8);
+    padding:0.3em;
+    padding-bottom:2%;
+    color:white;
+    border-top-right-radius: 2rem;
+    border-top-left-radius: 2rem;
+}
+#item-box >img{
+    width:100%;
+    height:60%;
+    border-radius: 2rem;
+}
+#item-box div{
+    display:flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+#item-box div div{
+    border:2px solid white;
+    border-radius: 50%;
+    padding:0.2em;
+}
+#item-box button{
+    border:none;
+    border-radius: 2rem;
+    color:white;
+    background-color:rgb(62, 54, 54) ;
+}
+#item-box button:hover{
+    background-color: green;
+}
+@media(max-width:420px){
+    #menu{
+        height:2rem;
+        width:2rem;
+        padding:0.2em;
+    }
+    .random-button,.favourite-button{
+        width:0px;
+        height:0px;
+        font-size:0px;
+        border:none;
+        padding:0px;
+    }
+    #search-box,#search-box form{
+        width:10em;
+        flex-grow: 1;
+    } 
+    #itemsList li{
+        width:40%;
+        max-width: 100%;
+    }
+    #menu-box #random-button,#menu-box #favourite-button{
+        height:auto;
+        width:auto;
+        font-size: inherit;
+        padding:0.3em;
+    }              
+}
