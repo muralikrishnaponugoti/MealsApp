@@ -1,6 +1,15 @@
 // link 1:`https://www.themealdb.com/api/json/v1/1/random.php` it is used to fetch the random meal
 // link 2: `https://www.themealdb.com/api/json/v1/1/search.php?s=${name-value}` it is used to featch the meals close to the specifid value which is a name of the meal
 // link 3: `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id-value}` it is used to get the meal by using specified mealid
+
+
+/*My favourite meals Page
+Display a list of all the favourite meals.
+Make this list persistent (should have the same number of meals before and after closing the browser/refreshing the browser).
+Remove from favourites button: Each meal should have remove from favourites button, clicking on which should remove that meal from the list.*/
+
+
+
 let favouriteList={meals:[]};
 let randomList={};
 let searchList={};
@@ -19,8 +28,12 @@ const app={
         let page=document.body.id;
         switch(page){
             case 'mealsapp': // this case is to handle the main page
+                const localV=JSON.parse(localStorage.getItem('favouriteList'));// if favouriteList variable is not present in the local storage then it will return null
+                if(localV){
+                    favouriteList=localV;
+                }
                 function favouriteHandler(){
-                    if(favouriteList.meals.length)// here if the lavouriteList.meals have objects then it will call app.displayList
+                    if(favouriteList.meals.length)// here if the favouriteList.meals have objects then it will call app.displayList
                         app.displayList(favouriteList,'call from fav');
                     else
                         alert('your favourite list is empty');
@@ -131,31 +144,76 @@ const app={
                     // console.log(meal.idMeal,event.target.id);
                     if(meal.idMeal===event.target.id)
                     {
+                        let fmeal={ //here this is for adding to favouriteList with only needed properties for the web page this operation is did for to oprimaize storage 
+                            idMeal:meal.idMeal,
+                            strMeal:meal.strMeal,
+                            strMealThumb:meal.strMealThumb,
+                        }
                         if(meal.hasOwnProperty('liked')){
                             // console.log(meal.liked);
                             if(meal.liked==='true'){
                                 event.target.parentNode.style.backgroundColor='transparent';
                                 meal.liked='false';
-                                if(favouriteList.meals){
-                                    favouriteList.meals.forEach(function(favMeal){
-                                        if(favMeal.idMeal===event.target.id){
-                                            favouriteList.meals.splice(favouriteList.meals.indexOf(favMeal),1);
-                                            if(text==='call from fav')
-                                                app.displayList(favouriteList,text);
+                                favouriteList.meals.forEach((favMeal)=>{
+                                    if(favMeal.idMeal===event.target.id)
+                                    {
+                                        favouriteList.meals.splice(favouriteList.meals.indexOf(favMeal),1);
+                                        localStorage.setItem('favouriteList', JSON.stringify(favouriteList));
+                                        const localValue=JSON.parse(localStorage.getItem('favouriteList'));// if favouriteList variable is not present in the local storage then it will return null
+                                        if(localValue){
+                                            favouriteList=localValue;
                                         }
-                                    })
-                                }
+                                        if(text==='call from fav')
+                                            app.displayList(favouriteList,text);
+                                    }
+                                })
                             }
                             else{
                                 event.target.parentNode.style.backgroundColor='rgb(62, 54, 54)';
                                 meal.liked='true';
-                                favouriteList.meals.push(meal);
+                                if(favouriteList.meals.length){
+                                    let found=1;
+                                    // the below loop will find does the liked item is allready present in the favouriteList or not if it present then it return if not it will add to favouriteList 
+                                    for(const favmeal of favouriteList.meals){
+                                        if(favmeal.idMeal==meal.idMeal)
+                                        {
+                                            found=0;
+                                            return;// here when we use forEach loop there is no use with this stament so we used for...of
+                                        }
+                                    }
+                                    if(found){
+                                        favouriteList.meals.push(fmeal);
+                                    }
+                                }
+                                else
+                                    favouriteList.meals.push(fmeal); 
                             }
                         }
                         else{
                             event.target.parentNode.style.backgroundColor='rgb(62, 54, 54)';
-                            meal.liked='true';
-                            favouriteList.meals.push(meal);
+                            meal.liked='true';//every time when we fetch data from api the property that we added is not applicable even we added the property allready to the same meal 
+                            if(favouriteList.meals.length)
+                            { 
+                                let found=1;
+                                // the below loop will find does the liked item is allready present in the favouriteList or not if it present then it return if not it will add to favouriteList 
+                                for(const favmeal of favouriteList.meals){
+                                    if(favmeal.idMeal==meal.idMeal)
+                                    {
+                                        found=0;
+                                        return;// here when we use forEach loop there is no use with this stament so we used for...of
+                                    }
+                                }
+                                if(found){
+                                    favouriteList.meals.push(fmeal);
+                                }
+                            }
+                            else
+                                favouriteList.meals.push(fmeal);
+                        }
+                        localStorage.setItem('favouriteList', JSON.stringify(favouriteList));
+                        const localValue=JSON.parse(localStorage.getItem('favouriteList'));// if favouriteList variable is not present in the local storage then it will return null
+                        if(localValue){
+                            favouriteList=localValue;
                         }
                     }   
                 })
@@ -211,7 +269,7 @@ const app={
         }).catch((error)=>{
             console.log('error',error);
         })
-        if (entireList) {
+        if (entireList.meals) {
             // console.log('Received randomList:');
             entireList.meals.forEach(function(meal){
                 // console.log(meal.idMeal,respectiveMealId);
